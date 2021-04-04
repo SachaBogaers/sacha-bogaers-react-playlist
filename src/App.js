@@ -1,10 +1,10 @@
 import './App.css';
-import SongOverview from './SongOverview'
+import Router from './Router'
 
 function App() {
   return (
     <div className="App">
-      <SongOverview />
+      <Router />
     </div>
   );
 }

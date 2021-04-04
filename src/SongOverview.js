@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import SongForm from './SongForm'
 import SongList from './SongList'
+import SortSongs from './SortSongs'
+import DeleteButton from './DeleteButton'
 
 class SongOverview extends Component {
 
@@ -163,6 +165,7 @@ class SongOverview extends Component {
 	render() {
 		return (
 			<div className="SongOverview">
+				<h1>My playlist</h1>
 				<SongForm
 					inputTitle={this.state.inputTitle}
 					inputArtist={this.state.inputArtist}
@@ -172,24 +175,14 @@ class SongOverview extends Component {
 					handleFormSubmit={this.handleFormSubmit}
 					handleChange={this.handleChange}
 				/>
-				<label htmlFor="sort">Sort songs:</label>
-				<select
-					className="sort"
-					name="sort"
+				<label htmlFor="sort">Sort songs: </label>
+				<SortSongs
 					value={this.state.sort}
-					onChange={this.sortArray}>
-					<option value="oldest_first">Oldest first</option>
-					<option value="newest_first">Newest first</option>
-					<option value="title_az">Title (a-z)</option>
-					<option value="title_za">Title (z-a)</option>
-					<option value="artist_az">Artist (a-z)</option>
-					<option value="artist_za">Artist (z-a</option>
-					<option value="rating_lowest">Rating (lowest first)</option>
-					<option value="rating_highest">Rating highest first)</option>
-				</select>
-				<button
-					onClick={this.clearPlaylist}
-				>Clear playlist</button>
+					sortArray={this.sortArray}
+				/>
+				<DeleteButton
+					clearPlaylist={this.clearPlaylist}
+				/>
 				<table style={{ width: "100%" }}>
 					<thead>
 						<tr className="song-header">
