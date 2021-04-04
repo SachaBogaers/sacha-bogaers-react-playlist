@@ -5,3 +5,7 @@
 .formSelect {
   height: 22px;
 }
+
+.song-row__item {
+  width: 20%;
+}
