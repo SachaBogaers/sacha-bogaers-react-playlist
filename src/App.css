@@ -9,3 +9,35 @@
 .song-row__item {
   width: 20%;
 }
+
+
+.main-nav ul {
+  margin: 0;
+  height: 60px;
+  background-color: mediumspringgreen;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main-nav ul li {
+  color: black;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.delete-button {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+/* About page */
+.about-page{
+  width: 50%;
+  margin: 0 auto;
+}

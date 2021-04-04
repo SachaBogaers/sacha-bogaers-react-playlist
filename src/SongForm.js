@@ -5,6 +5,7 @@ function SongForm(props) {
 		<form
 			onSubmit={props.handleFormSubmit}
 		>
+			<span>Add a new song: </span>
 			<input
 				type="text"
 				placeholder="Song title"
