@@ -6,7 +6,8 @@ function SongList(props) {
 		<tbody>
 			{props.songs.map(song => {
 				return (<Song
-					key={song.title}
+					key={song.id}
+					id={song.id}
 					title={song.title}
 					artist={song.artist}
 					genre={song.genre}
