@@ -10,6 +10,13 @@
   width: 20%;
 }
 
+input {
+  margin: 3px;
+}
+
+select {
+  margin: 3px;
+}
 
 .main-nav ul {
   margin: 0;
