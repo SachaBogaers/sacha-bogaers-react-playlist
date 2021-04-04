@@ -54,8 +54,42 @@ class SongOverview extends Component {
 		this.addSong = this.addSong.bind(this)
 		this.clearPlaylist = this.clearPlaylist.bind(this)
 		this.sortArray = this.sortArray.bind(this)
+		this.clearInput = this.clearInput.bind(this)
 
 	}
+
+
+	addSong = (song) => {
+		this.setState(prevState => ({
+			songs: [...prevState.songs, song]
+		}))
+
+	}
+
+	clearInput() {
+		this.setState({
+			inputTitle: "",
+			inputArtist: "",
+			inputGenre: "",
+			inputRating: ""
+		})
+	}
+
+	clearPlaylist() {
+		this.setState({
+			songs: []
+		})
+	}
+
+
+	handleChange(event) {
+		const name = event.target.name
+		const value = event.target.value
+		this.setState({
+			[name]: value
+		})
+	}
+
 
 	handleFormSubmit(event) {
 		event.preventDefault();
@@ -67,39 +101,14 @@ class SongOverview extends Component {
 			rating: this.state.inputRating
 		}
 		this.addSong(song)
-		this.setState({
-			inputTitle: "",
-			inputArtist: "",
-			inputGenre: "",
-			inputRating: ""
-		})
+		this.clearInput()
 	}
 
-	addSong = (song) => {
-		this.setState(prevState => ({
-			songs: [...prevState.songs, song]
-		}))
 
-	}
-
-	handleChange(event) {
-		const name = event.target.name
-		const value = event.target.value
-		this.setState({
-			[name]: value
-		})
-	}
-
-	clearPlaylist() {
-		this.setState({
-			songs: []
-		})
-	}
 
 	sortArray(event) {
 		const type = event.target.value
 		const songs = [...this.state.songs]
-		console.log("songs", songs)
 		const types = {
 			oldest_first: 'id',
 			title_az: 'title',
@@ -110,7 +119,6 @@ class SongOverview extends Component {
 			artist_za: 'artist',
 			rating_highest: 'rating'
 		}
-		console.log(types)
 		const sortProperty = types[type];
 		switch (type) {
 			case "title_az":
@@ -147,7 +155,6 @@ class SongOverview extends Component {
 				break;
 			default: return;
 		}
-		console.log('property', sortProperty)
 		this.setState({
 			songs: songs
 		})
