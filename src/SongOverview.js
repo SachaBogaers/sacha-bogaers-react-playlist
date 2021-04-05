@@ -27,7 +27,7 @@ class SongOverview extends Component {
 			},
 			{
 				id: 3,
-				title: "Dawn",
+				title: "Salt",
 				artist: "Ry X",
 				genre: "Other",
 				rating: "5"
@@ -59,8 +59,7 @@ class SongOverview extends Component {
 				artist: "Beethoven",
 				genre: "Classical",
 				rating: "3"
-			},
-			],
+			}],
 			inputTitle: "",
 			inputArtist: "",
 			inputGenre: "",
@@ -78,7 +77,7 @@ class SongOverview extends Component {
 		this.filterRating = this.filterRating.bind(this)
 	}
 
-
+	// Adding a new song to the playlist
 	addSong = (song) => {
 		this.setState(prevState => ({
 			songs: [...prevState.songs, song]
@@ -86,6 +85,7 @@ class SongOverview extends Component {
 
 	}
 
+	// Clearing the input fields in the form
 	clearInput() {
 		this.setState({
 			inputTitle: "",
@@ -95,13 +95,14 @@ class SongOverview extends Component {
 		})
 	}
 
+	// Clearing the entire playlist
 	clearPlaylist() {
 		this.setState({
 			songs: []
 		})
 	}
 
-
+	// Handling change in the form
 	handleChange(event) {
 		const name = event.target.name
 		const value = event.target.value
@@ -110,7 +111,7 @@ class SongOverview extends Component {
 		})
 	}
 
-
+	// Handle the form being submitted and adding a new song to the playlist
 	handleFormSubmit(event) {
 		event.preventDefault();
 		const song = {
@@ -125,10 +126,11 @@ class SongOverview extends Component {
 	}
 
 
-
+	// Sorting the list of songs based on a given value
 	sortArray(event) {
 		const type = event.target.value
 		const songs = [...this.state.songs]
+		// What characteristic is this sorting based on?
 		const types = {
 			oldest_first: 'id',
 			title_az: 'title',
@@ -140,7 +142,9 @@ class SongOverview extends Component {
 			rating_highest: 'rating'
 		}
 		const sortProperty = types[type];
+		// Check what to do with the given type
 		switch (type) {
+			// Sorting from 'low to high', words
 			case "title_az":
 			case "artist_az":
 				songs.sort(function (a, b) {
@@ -149,6 +153,7 @@ class SongOverview extends Component {
 					return 0;
 				})
 				break;
+			// Sorting from low to high, numbers
 			case "oldest_first":
 			case "rating_lowest":
 				songs.sort(function (a, b) {
@@ -157,6 +162,7 @@ class SongOverview extends Component {
 					return 0;
 				})
 				break;
+			// Sorting from 'high to low', words
 			case "title_za":
 			case "artist_za":
 				songs.sort(function (a, b) {
@@ -165,6 +171,7 @@ class SongOverview extends Component {
 					return 0;
 				})
 				break;
+			// Sorting from high to low, numbers
 			case "newest_first":
 			case "rating_highest":
 				songs.sort(function (a, b) {
@@ -180,6 +187,7 @@ class SongOverview extends Component {
 		})
 	}
 
+	// Filtering the songs in state based on genre
 	filterGenre(event) {
 		const genre = event.target.value
 		const checked = event.target.checked
@@ -206,6 +214,8 @@ class SongOverview extends Component {
 
 	}
 
+
+	// Filtering the songs in state based on rating
 	filterRating(event) {
 		const rating = event.target.value
 		const checked = event.target.checked
@@ -248,7 +258,6 @@ class SongOverview extends Component {
 					handleFormSubmit={this.handleFormSubmit}
 					handleChange={this.handleChange}
 				/>
-
 				<SortSongs
 					value={this.state.sort}
 					sortArray={this.sortArray}
